@@ -9,11 +9,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@EnableJpaRepositories
 @Repository
-public interface AtmRepository extends JpaRepository<ATM,Long > {
+@EnableJpaRepositories
+public interface AtmRepository extends JpaRepository<ATM, Long> {
 
-    @Query("SELECT b FROM ATM b")
-    List<ATM> readAll();
+    @Query("SELECT atm FROM ATM atm WHERE atm.bank.bankCode = :bankCode")
+    List<ATM> findByBankCode(int bankCode);
 
+    @Query("SELECT atm FROM ATM atm WHERE atm.atmNumber = :atmNumber")
+    ATM findByAtmNumber(int atmNumber);
+
+
+    @Query("SELECT atm FROM ATM atm")
+    List<ATM> findAllAtmsWithBank();
 }

@@ -10,5 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ATMDto {
-
+    private int atmNumber;
+    private String atmAddress;
+    private BankDto bank;
 }
